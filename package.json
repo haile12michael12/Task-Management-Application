@@ -10,7 +10,6 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.11",
     "@uidotdev/usehooks": "^2.4.1",
     "chart.js": "^4.4.9",
     "chartjs-chart-sankey": "^0.14.0",

@@ -8,6 +8,7 @@ import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 import BudgetTracker from "@/pages/BudgetTracker";
 import AdvancedDashboard from "@/pages/AdvancedDashboard";
+import ParseAndTrack from "@/pages/ParseAndTrack";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<BudgetTracker />} />
             <Route path="/dashboard" element={<Index />} />
             <Route path="/advanced-dashboard" element={<AdvancedDashboard />} />
+            <Route path="/parse-and-track" element={<ParseAndTrack />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

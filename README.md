@@ -4,6 +4,8 @@ An advanced spending tracker application that combines transaction tracking and 
 
 ## Features
 
+
+
 - **Transaction Import**: Import transactions from CSV and PDF files (supports major banks like Amex, Apple Card, US Bank)
 - **Automatic Categorization**: Smart categorization based on merchant names and descriptions
 - **Budget Planning**: Create and manage budget categories with subcategories

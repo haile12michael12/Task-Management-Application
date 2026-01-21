@@ -1,4 +1,4 @@
-.parse-and-track-container {
+.transaction-parser-container {
   /* Variables from index.css */
   --bg-color: #ffffff;
   --bg-secondary: rgb(251, 251, 250);
@@ -945,7 +945,7 @@
   }
 }
 
-.dark .parse-and-track-container {
+.dark .transaction-parser-container {
   --bg-color: #191919;
   --bg-secondary: #252525;
   --text-color: #e0e0e0;
@@ -955,17 +955,17 @@
   --modal-shadow: rgba(0, 0, 0, 0.5);
 }
 
-[data-theme="dark"] .parse-and-track-container .upload-btn {
+[data-theme="dark"] .transaction-parser-container .upload-btn {
   color: #000000 !important; 
   font-weight: 600;
 }
 
-[data-theme="dark"] .parse-and-track-container .filter-group input, 
-[data-theme="dark"] .parse-and-track-container .filter-group select {
+[data-theme="dark"] .transaction-parser-container .filter-group input, 
+[data-theme="dark"] .transaction-parser-container .filter-group select {
   color: #000000 !important; 
   background-color: #ffffff !important;
 }
 
-[data-theme="dark"] .parse-and-track-container .reset-btn {
+[data-theme="dark"] .transaction-parser-container .reset-btn {
   color: #000000 !important;
 }

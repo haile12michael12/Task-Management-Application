@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useTransactions } from "../hooks/useTransactions";
-import UploadSection from "../components/parse-and-track/UploadSection";
-import FiltersSection from "../components/parse-and-track/FiltersSection";
-import SummarySection from "../components/parse-and-track/SummarySection";
-import TransactionsTable from "../components/parse-and-track/TransactionsTable";
-import HowItWorksModal from "../components/parse-and-track/HowItWorksModal";
-import ConfirmDeleteModal from "../components/parse-and-track/ConfirmDeleteModal";
+import UploadSection from "../components/transaction-parser/sections/UploadSection";
+import FiltersSection from "../components/transaction-parser/sections/FiltersSection";
+import SummarySection from "../components/transaction-parser/sections/SummarySection";
+import TransactionsTable from "../components/transaction-parser/sections/TransactionsTable";
+import HowItWorksModal from "../components/transaction-parser/modals/HowItWorksModal";
+import ConfirmDeleteModal from "../components/transaction-parser/modals/ConfirmDeleteModal";
 import { DashboardLayout } from "../components/layout/DashboardLayout";
-import "./ParseAndTrack.css";
+import "../components/transaction-parser/TransactionParser.css";
 
 export default function ParseAndTrack() {
     const [showHowItWorks, setShowHowItWorks] = useState(false);
@@ -41,7 +41,7 @@ export default function ParseAndTrack() {
 
     return (
         <DashboardLayout title="Parse & Track Spending" subtitle="Upload statements and track your expenses">
-            <div className="parse-and-track-container h-full">
+            <div className="transaction-parser-container h-full">
                 <div className="app p-0 max-w-none">
                     <header className="mb-8 flex items-center justify-between gap-4">
                         <h1 className="sr-only">Spending</h1>

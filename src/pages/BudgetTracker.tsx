@@ -62,7 +62,11 @@ const BudgetTracker = () => {
   const incomeAmount = parseCurrency(income);
 
   return (
-    <DashboardLayout title="Budget Tracker" subtitle="Manage your finances and track spending">
+    <DashboardLayout 
+      title="Budget Tracker" 
+      subtitle="Manage your finances and track spending"
+      showTopNavbar={true}
+    >
       <div className={cn(
         "transition-colors w-full",
         theme === "dark" ? "text-white" : "text-gray-900"

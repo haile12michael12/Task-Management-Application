@@ -9,6 +9,8 @@ import NotFound from "@/pages/NotFound";
 import BudgetTracker from "@/pages/BudgetTracker";
 import AdvancedDashboard from "@/pages/AdvancedDashboard";
 import ParseAndTrack from "@/pages/ParseAndTrack";
+import NavbarDemoPage from "@/pages/NavbarDemoPage";
+import NavbarUsageGuide from "@/pages/NavbarUsageGuide";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,8 @@ const App = () => (
             <Route path="/dashboard" element={<Index />} />
             <Route path="/advanced-dashboard" element={<AdvancedDashboard />} />
             <Route path="/parse-and-track" element={<ParseAndTrack />} />
+            <Route path="/navbar-demo" element={<NavbarDemoPage />} />
+            <Route path="/navbar-guide" element={<NavbarUsageGuide />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

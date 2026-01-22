@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useId } from 'react'
 import PropTypes from 'prop-types'
-import privacyDiagram from '../../assets/privacy-diagram.png'
+import privacyDiagram from '../../../assets/privacy-diagram.png'
 
 function HowItWorksModal({ isOpen, onClose }) {
   const modalRef = useRef(null)

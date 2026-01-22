@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
-import InstructionModal from './InstructionModal'
-import { HELP_CONTENT, UPLOAD_LABELS } from '../../constants/helpContent'
+import InstructionModal from '../modals/InstructionModal'
+import { HELP_CONTENT, UPLOAD_LABELS } from '../../../constants/helpContent'
 
 function UploadSection({
   uploading,

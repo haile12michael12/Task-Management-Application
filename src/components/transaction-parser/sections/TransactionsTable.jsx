@@ -1,7 +1,7 @@
 import React from 'react'
-import { ALL_CATEGORIES } from '../../utils/storage'
-import { formatCurrency, formatDate, getCategoryClassName } from '../../utils/formatters'
-import SortHeader from './SortHeader'
+import { ALL_CATEGORIES } from '../../../utils/storage'
+import { formatCurrency, formatDate, getCategoryClassName } from '../../../utils/formatters'
+import SortHeader from '../components/SortHeader'
 
 function TransactionsTable({
   transactions,

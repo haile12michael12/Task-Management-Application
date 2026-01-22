@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatCurrency, getCategoryClassName } from '../../utils/formatters'
+import { formatCurrency, getCategoryClassName } from '../../../utils/formatters'
 
 function SummarySection({ summary, selectedCategory, setSelectedCategory }) {
 

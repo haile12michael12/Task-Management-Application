@@ -41,7 +41,6 @@ const mainNavItems = [
 
 const toolsNavItems = [
   { title: "Import", url: "/import", icon: Upload },
-  { title: "Transaction Parser", url: "/parse-and-track", icon: ArrowLeftRight },
   { title: "AI Insights", url: "/insights", icon: Sparkles },
   { title: "Notifications", url: "/notifications", icon: Bell },
 ];

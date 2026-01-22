@@ -8,9 +8,7 @@ import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 import BudgetTracker from "@/pages/BudgetTracker";
 import AdvancedDashboard from "@/pages/AdvancedDashboard";
-import ParseAndTrack from "@/pages/ParseAndTrack";
-import NavbarDemoPage from "@/pages/NavbarDemoPage";
-import NavbarUsageGuide from "@/pages/NavbarUsageGuide";
+import TransactionParserPage from "@/pages/TransactionParserPage";
 
 const queryClient = new QueryClient();
 
@@ -20,14 +18,12 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<BudgetTracker />} />
             <Route path="/dashboard" element={<Index />} />
             <Route path="/advanced-dashboard" element={<AdvancedDashboard />} />
-            <Route path="/parse-and-track" element={<ParseAndTrack />} />
-            <Route path="/navbar-demo" element={<NavbarDemoPage />} />
-            <Route path="/navbar-guide" element={<NavbarUsageGuide />} />
+            <Route path="/transactions" element={<TransactionParserPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

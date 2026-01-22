@@ -25,6 +25,7 @@ An advanced spending tracker application that combines transaction tracking and 
 - **File Processing**: PapaParse for CSV, PDF.js for PDF documents
 - **State Management**: React Hooks with custom hooks
 - **Formatters**: Custom currency and date formatters
+- **Deployment**: Automated deployment with GitHub Actions to GitHub Pages
 
 ## Installation
 
@@ -115,6 +116,19 @@ src/
 3. **Storage**: Transactions are stored in localStorage
 4. **Filtering**: Transactions are filtered based on user selections
 5. **Visualization**: Data is presented in tables and charts
+
+## Deployment
+
+The application is configured for automated deployment to GitHub Pages using GitHub Actions:
+
+1. Push changes to the `main` branch
+2. The workflow will automatically build and deploy the application
+3. Access the deployed application at: https://haile12michael12.github.io/Task-Management-Application
+
+Alternatively, you can deploy manually using:
+```bash
+npm run deploy
+```
 
 ## Contributing
 

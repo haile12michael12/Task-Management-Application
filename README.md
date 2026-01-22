@@ -130,6 +130,8 @@ Alternatively, you can deploy manually using:
 npm run deploy
 ```
 
+This command automatically builds the project first (due to the `predeploy` script) and then deploys the built files to the configured GitHub Pages branch using the gh-pages package.
+
 ## Contributing
 
 1. Fork the repository

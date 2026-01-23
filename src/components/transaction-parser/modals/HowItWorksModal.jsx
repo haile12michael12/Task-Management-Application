@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useId } from 'react'
 import PropTypes from 'prop-types'
 import privacyDiagram from '../../../assets/privacy-diagram.png'
+import { useLanguage } from '@/hooks/use-language'
 
 function HowItWorksModal({ isOpen, onClose }) {
+  const { t } = useLanguage()
   const modalRef = useRef(null)
   const triggerRef = useRef(null)
   const onCloseRef = useRef(onClose)
@@ -79,12 +81,12 @@ function HowItWorksModal({ isOpen, onClose }) {
     >
       <div className="modal how-it-works-modal" ref={modalRef}>
         <div className="modal-header">
-          <h3 id={titleId}>How This Site Works</h3>
+          <h3 id={titleId}>{t.transactionParser.howItWorks.title}</h3>
           <button
             type="button"
             className="modal-close"
             onClick={onClose}
-            aria-label="Close how it works"
+            aria-label={t.common.cancel}
           >
             ×
           </button>
@@ -92,15 +94,9 @@ function HowItWorksModal({ isOpen, onClose }) {
         <div className="modal-body">
           <div className="how-it-works-content">
             <section>
-              <h4>Your Privacy First</h4>
+              <h4>{t.transactionParser.howItWorks.privacyTitle}</h4>
               <p>
-                <strong>All processing happens locally in your browser.</strong> Your bank statements and
-                transaction data never leave your device. There is no backend server, no database,
-                and no data collection.
-              </p>
-              <p>
-                When you refresh the page, all data is cleared from memory. This site cannot and
-                does not transmit your financial information anywhere.
+                {t.transactionParser.howItWorks.privacyDesc}
               </p>
               <div className="privacy-diagram">
                 <img
@@ -115,19 +111,19 @@ function HowItWorksModal({ isOpen, onClose }) {
             </section>
 
             <section>
-              <h4>How It Works</h4>
+              <h4>{t.transactionParser.howItWorks.stepsTitle}</h4>
               <ol className="how-it-works-list">
                 <li>
-                  <strong>Upload:</strong> Drop your bank statements (CSV or PDF format) into the upload area
+                  {t.transactionParser.howItWorks.step1}
                 </li>
                 <li>
-                  <strong>Parse:</strong> The app processes your files locally using a Web Worker to extract transactions
+                  {t.transactionParser.howItWorks.step2}
                 </li>
                 <li>
-                  <strong>Categorize:</strong> Transactions are automatically categorized based on merchant names
+                  {t.transactionParser.howItWorks.step3}
                 </li>
                 <li>
-                  <strong>Analyze:</strong> View spending summaries, filter by date or category, and edit categories as needed
+                  {t.transactionParser.howItWorks.step4}
                 </li>
               </ol>
             </section>
@@ -135,9 +131,9 @@ function HowItWorksModal({ isOpen, onClose }) {
             <section>
               <h4>Supported Banks</h4>
               <ul className="bank-list">
-                <li>American Express (CSV and PDF)</li>
-                <li>Chase (CSV)</li>
-                <li>Capital One (CSV)</li>
+                <li>{t.transactionParser.notes.amex}</li>
+                <li>{t.transactionParser.notes.usbank}</li>
+                <li>{t.transactionParser.notes.apple}</li>
               </ul>
             </section>
 
@@ -155,8 +151,7 @@ function HowItWorksModal({ isOpen, onClose }) {
 
             <section className="privacy-notice">
               <p>
-                <strong>Note:</strong> Since this app uses in-memory storage only, all data is lost when you
-                close or refresh the page. This is by design to ensure maximum privacy.
+                <strong>Note:</strong> {t.transactionParser.howItWorks.privacyDesc}
               </p>
             </section>
           </div>

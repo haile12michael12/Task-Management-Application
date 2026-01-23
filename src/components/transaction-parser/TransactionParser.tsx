@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTransactions } from '@/hooks/useTransactions';
+import { useLanguage } from '@/hooks/use-language';
 import UploadSection from './sections/UploadSection';
 import FiltersSection from './sections/FiltersSection';
 import SummarySection from './sections/SummarySection';
@@ -12,6 +13,7 @@ import './TransactionParser.css';
 
 const TransactionParser = () => {
   const [showHowItWorks, setShowHowItWorks] = useState(false);
+  const { t } = useLanguage();
   const {
     transactions,
     summary,
@@ -45,7 +47,7 @@ const TransactionParser = () => {
       <div className="flex justify-end">
         <Button variant="outline" size="sm" onClick={() => setShowHowItWorks(true)}>
           <HelpCircle className="mr-2 h-4 w-4" />
-          How it works
+          {t.common.howItWorks}
         </Button>
       </div>
 
@@ -90,9 +92,10 @@ const TransactionParser = () => {
         isOpen={deleteConfirmOpen}
         onClose={() => setDeleteConfirmOpen(false)}
         onConfirm={() => handleDeleteTransaction(deletingId)}
-        title="Delete Transaction"
-        message="Are you sure you want to delete this transaction? This action cannot be undone."
-        confirmText="Delete"
+        title={t.transactionParser.deleteModal.title}
+        message={t.transactionParser.deleteModal.message}
+        confirmText={t.transactionParser.deleteModal.confirm}
+        cancelText={t.common.cancel}
         isDangerous={true}
       />
 

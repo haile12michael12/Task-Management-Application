@@ -2,6 +2,7 @@ import React from 'react'
 import { ALL_CATEGORIES } from '../../../utils/storage'
 import { formatCurrency, formatDate, getCategoryClassName } from '../../../utils/formatters'
 import SortHeader from '../components/SortHeader'
+import { useLanguage } from '@/hooks/use-language'
 
 function TransactionsTable({
   transactions,
@@ -15,23 +16,24 @@ function TransactionsTable({
   setDeletingId,
   setDeleteConfirmOpen
 }) {
+  const { t } = useLanguage()
 
   return (
     <section className="transactions-section">
-      <h2>Transactions ({transactions.length})</h2>
+      <h2>{t.transactionParser.summary.transactionCount} ({transactions.length})</h2>
       <div className="transactions-list">
         {transactions.length === 0 ? (
-          <p className="no-data">No transactions found. Upload a CSV or PDF file to get started.</p>
+          <p className="no-data">{t.transactionParser.table.noTransactions}</p>
         ) : (
           <table>
             <thead>
               <tr>
-                <SortHeader field="timestamp" label="Date" sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
-                <SortHeader field="title" label="Description" sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
-                <SortHeader field="category" label="Category" sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
-                <SortHeader field="source" label="Source" sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
-                <SortHeader field="amount" label="Amount" sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
-                <th>Actions</th>
+                <SortHeader field="timestamp" label={t.transactionParser.table.date} sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
+                <SortHeader field="title" label={t.transactionParser.table.description} sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
+                <SortHeader field="category" label={t.transactionParser.table.category} sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
+                <SortHeader field="source" label={t.transactionParser.table.source} sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
+                <SortHeader field="amount" label={t.transactionParser.table.amount} sortField={sortField} sortDirection={sortDirection} onSort={handleSort} />
+                <th>{t.transactionParser.table.actions}</th>
               </tr>
             </thead>
             <tbody>

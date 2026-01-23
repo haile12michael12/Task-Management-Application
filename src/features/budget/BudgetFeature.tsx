@@ -1,6 +1,6 @@
 import React from 'react';
 import { useBudget } from './hooks/useBudget';
-import BudgetDashboard from './components/BudgetDashboard';
+import BudgetWithTransactions from './BudgetWithTransactions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/shared/components/ui/card';
 
 const BudgetFeature: React.FC = () => {
@@ -29,20 +29,9 @@ const BudgetFeature: React.FC = () => {
 
   return (
     <div className="container mx-auto py-8 px-4">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Budget Management</h1>
-        <p className="text-muted-foreground">
-          Track and manage your budget effectively
-        </p>
-      </div>
-
-      <BudgetDashboard 
-        totalBudget={budgetData.totalBudget}
-        spentAmount={budgetData.spentAmount}
-        remainingAmount={budgetData.remainingAmount}
-      />
-
-      {/* Example controls */}
+      <BudgetWithTransactions />
+      
+      {/* Legacy controls for demonstration */}
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <CardHeader>

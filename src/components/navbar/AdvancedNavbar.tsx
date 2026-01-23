@@ -22,9 +22,12 @@ import {
 import { useTheme } from '@/hooks/use-theme';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
+import LanguageSelector from './LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 const AdvancedNavbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -43,13 +46,13 @@ const AdvancedNavbar: React.FC = () => {
   }, []);
 
   const navItems = [
-    { name: 'Home', to: '/', icon: Home },
-    { name: 'Dashboard', to: '/dashboard', icon: PieChart },
-    { name: 'Budgets', to: '/budgets', icon: Wallet },
-    { name: 'Transactions', to: '/transactions', icon: CreditCard },
-    { name: 'Goals', to: '/goals', icon: Target },
-    { name: 'Reports', to: '/reports', icon: BarChart3 },
-    { name: 'Advanced', to: '/advanced-dashboard', icon: Sparkles },
+    { name: t('common.home'), to: '/', icon: Home },
+    { name: t('common.dashboard'), to: '/dashboard', icon: PieChart },
+    { name: t('common.budgets'), to: '/budgets', icon: Wallet },
+    { name: t('common.transactions'), to: '/transactions', icon: CreditCard },
+    { name: t('common.goals'), to: '/goals', icon: Target },
+    { name: t('common.reports'), to: '/reports', icon: BarChart3 },
+    { name: t('common.advanced'), to: '/advanced-dashboard', icon: Sparkles },
   ];
 
   const productItems = [
@@ -117,7 +120,7 @@ const AdvancedNavbar: React.FC = () => {
                   'hover:bg-accent/50 hover:text-accent-foreground text-foreground/80'
                 )}
               >
-                Products <ChevronDown className="w-4 h-4 ml-1" />
+                {t('common.products')} <ChevronDown className="w-4 h-4 ml-1" />
               </button>
 
               {isProductsMenuOpen && (
@@ -139,6 +142,9 @@ const AdvancedNavbar: React.FC = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2">
+            {/* Language Selector */}
+            <LanguageSelector />
+            
             {/* Search Button */}
             <Button
               variant="ghost"
@@ -151,7 +157,7 @@ const AdvancedNavbar: React.FC = () => {
                 <div className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-2">
                   <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder={t('common.searchPlaceholder')}
                     className="w-full px-3 py-2 bg-accent rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
@@ -202,7 +208,7 @@ const AdvancedNavbar: React.FC = () => {
                     to="/profile"
                     className="block px-4 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
-                    Profile
+                    {t('common.profile')}
                   </Link>
                   <Link
                     to="/settings"
@@ -214,7 +220,7 @@ const AdvancedNavbar: React.FC = () => {
                   <button
                     className="w-full text-left px-4 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
-                    Sign Out
+                    {t('common.signOut')}
                   </button>
                 </div>
               )}
@@ -265,7 +271,7 @@ const AdvancedNavbar: React.FC = () => {
                   className="w-full justify-start"
                   onClick={toggleTheme}
                 >
-                  {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+                  {theme === 'dark' ? t('common.lightMode') : t('common.darkMode')}
                 </Button>
               </div>
             </div>

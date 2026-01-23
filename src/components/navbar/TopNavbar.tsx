@@ -21,6 +21,8 @@ import {
 import { useTheme } from '@/hooks/use-theme';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/utils/cn';
+import LanguageSelector from './LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 interface NavbarItem {
   name: string;
@@ -30,19 +32,20 @@ interface NavbarItem {
 
 const TopNavbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   
   const location = useLocation();
 
   const navItems: NavbarItem[] = [
-    { name: 'Home', to: '/', icon: Home },
-    { name: 'Dashboard', to: '/dashboard', icon: PieChart },
-    { name: 'Budgets', to: '/budgets', icon: Wallet },
-    { name: 'Transactions', to: '/transactions', icon: CreditCard },
-    { name: 'Goals', to: '/goals', icon: Target },
-    { name: 'Reports', to: '/reports', icon: BarChart3 },
-    { name: 'Advanced', to: '/advanced-dashboard', icon: Sparkles },
+    { name: t('common.home'), to: '/', icon: Home },
+    { name: t('common.dashboard'), to: '/dashboard', icon: PieChart },
+    { name: t('common.budgets'), to: '/budgets', icon: Wallet },
+    { name: t('common.transactions'), to: '/transactions', icon: CreditCard },
+    { name: t('common.goals'), to: '/goals', icon: Target },
+    { name: t('common.reports'), to: '/reports', icon: BarChart3 },
+    { name: t('common.advanced'), to: '/advanced-dashboard', icon: Sparkles },
   ];
 
   return (
@@ -88,6 +91,9 @@ const TopNavbar: React.FC = () => {
 
           {/* Right Side Actions */}
           <div className="flex items-center space-x-2">
+            {/* Language Selector */}
+            <LanguageSelector />
+            
             {/* Theme Toggle */}
             <Button
               variant="ghost"
@@ -132,7 +138,7 @@ const TopNavbar: React.FC = () => {
                     className="block px-4 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-accent-foreground transition-colors"
                     onClick={() => setIsUserMenuOpen(false)}
                   >
-                    Profile
+                    {t('common.profile')}
                   </Link>
                   <Link
                     to="/settings"
@@ -145,7 +151,7 @@ const TopNavbar: React.FC = () => {
                   <button
                     className="w-full text-left px-4 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-accent-foreground transition-colors"
                   >
-                    Sign Out
+                    {t('common.signOut')}
                   </button>
                 </div>
               )}

@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLanguage } from '@/hooks/use-language'
 
 function FiltersSection({
   startDate,
@@ -10,12 +11,14 @@ function FiltersSection({
   categories,
   resetFilters
 }) {
+  const { t } = useLanguage()
+
   return (
     <section className="filters-section">
-      <h2>Filters</h2>
+      <h2>{t.transactionParser.filters.title}</h2>
       <div className="filters">
         <div className="filter-group">
-          <label>Start Date</label>
+          <label>{t.transactionParser.filters.startDate}</label>
           <input
             type="date"
             value={startDate}
@@ -23,7 +26,7 @@ function FiltersSection({
           />
         </div>
         <div className="filter-group">
-          <label>End Date</label>
+          <label>{t.transactionParser.filters.endDate}</label>
           <input
             type="date"
             value={endDate}
@@ -31,7 +34,7 @@ function FiltersSection({
           />
         </div>
         <div className="filter-group">
-          <label>Category</label>
+          <label>{t.transactionParser.filters.category}</label>
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -42,7 +45,7 @@ function FiltersSection({
           </select>
         </div>
         <button className="reset-btn" onClick={resetFilters}>
-          Reset Filters
+          {t.transactionParser.filters.reset}
         </button>
       </div>
     </section>

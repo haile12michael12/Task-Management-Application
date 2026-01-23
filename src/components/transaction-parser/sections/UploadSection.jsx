@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import InstructionModal from '../modals/InstructionModal'
 import { HELP_CONTENT, UPLOAD_LABELS } from '../../../constants/helpContent'
+import { useLanguage } from '@/hooks/use-language'
 
 function UploadSection({
   uploading,
@@ -9,6 +10,7 @@ function UploadSection({
   handleFileUpload,
   handleClearData
 }) {
+  const { t } = useLanguage()
   const [showAmexHelp, setShowAmexHelp] = useState(false)
   const [showAppleHelp, setShowAppleHelp] = useState(false)
 
@@ -17,11 +19,21 @@ function UploadSection({
   const handleOpenAppleHelp = useCallback(() => setShowAppleHelp(true), [])
   const handleCloseAppleHelp = useCallback(() => setShowAppleHelp(false), [])
 
+  const amexSteps = t.transactionParser.helpContent.amex.steps.map((step, index) => ({
+    ...step,
+    image: HELP_CONTENT.amex.steps[index]?.image || null
+  }))
+
+  const appleSteps = t.transactionParser.helpContent.apple.steps.map((step, index) => ({
+    ...step,
+    image: HELP_CONTENT.apple.steps[index]?.image || null
+  }))
+
   return (
     <section className="upload-section">
       <div className="upload-controls">
         <label className="upload-btn" aria-busy={uploading}>
-          {uploading ? UPLOAD_LABELS.uploadButton.processing : UPLOAD_LABELS.uploadButton.default}
+          {uploading ? t.transactionParser.uploading : t.transactionParser.uploadButton}
           <input
             type="file"
             accept=".csv,.pdf"
@@ -29,20 +41,20 @@ function UploadSection({
             disabled={uploading}
             multiple
             hidden
-            aria-label="Upload bank statement files in CSV or PDF format"
+            aria-label={t.transactionParser.uploadDesc}
           />
         </label>
         <button
           className="clear-btn"
           onClick={handleClearData}
-          aria-label={UPLOAD_LABELS.clearButton}
+          aria-label={t.transactionParser.clearData}
         >
-          {UPLOAD_LABELS.clearButton}
+          {t.transactionParser.clearData}
         </button>
       </div>
 
       <div className="upload-note-row">
-        <p className="upload-note">{UPLOAD_LABELS.amexNote}</p>
+        <p className="upload-note">{t.transactionParser.notes.amex}</p>
         <button
           type="button"
           className="info-btn"
@@ -55,7 +67,7 @@ function UploadSection({
       </div>
 
       <div className="upload-note-row">
-        <p className="upload-note">{UPLOAD_LABELS.appleNote}</p>
+        <p className="upload-note">{t.transactionParser.notes.apple}</p>
         <button
           type="button"
           className="info-btn"
@@ -68,21 +80,21 @@ function UploadSection({
       </div>
 
       <div className="upload-note-row">
-        <p className="upload-note">{UPLOAD_LABELS.usbankNote}</p>
+        <p className="upload-note">{t.transactionParser.notes.usbank}</p>
       </div>
 
       <InstructionModal
         isOpen={showAmexHelp}
         onClose={handleCloseAmexHelp}
-        title={HELP_CONTENT.amex.title}
-        steps={HELP_CONTENT.amex.steps}
+        title={t.transactionParser.helpContent.amex.title}
+        steps={amexSteps}
       />
 
       <InstructionModal
         isOpen={showAppleHelp}
         onClose={handleCloseAppleHelp}
-        title={HELP_CONTENT.apple.title}
-        steps={HELP_CONTENT.apple.steps}
+        title={t.transactionParser.helpContent.apple.title}
+        steps={appleSteps}
       />
 
       {message.text && (

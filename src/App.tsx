@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/hooks/use-theme";
+import { LanguageProvider } from "@/hooks/use-language";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 import BudgetTracker from "@/pages/BudgetTracker";
@@ -15,19 +16,21 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<BudgetTracker />} />
-            <Route path="/dashboard" element={<Index />} />
-            <Route path="/advanced-dashboard" element={<AdvancedDashboard />} />
-            <Route path="/transactions" element={<TransactionParserPage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <LanguageProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<BudgetTracker />} />
+              <Route path="/dashboard" element={<Index />} />
+              <Route path="/advanced-dashboard" element={<AdvancedDashboard />} />
+              <Route path="/transactions" element={<TransactionParserPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </LanguageProvider>
     </ThemeProvider>
   </QueryClientProvider>
 );

@@ -1,11 +1,12 @@
 # Advanced Spending Tracker
 
-An advanced spending tracker application that combines transaction tracking and budget planning in a unified interface. This application allows users to import financial data from CSV/PDF files, categorize transactions automatically, manage budgets, and visualize spending patterns.
+An advanced spending tracker application that combines transaction tracking and budget planning in a unified interface. This application allows users to import financial data from CSV/PDF files, categorize transactions automatically, manage budgets, and visualize spending patterns. The application now includes user authentication and enhanced finance tracking capabilities.
 
 ## Features
 
 
 
+- **User Authentication**: Secure login and registration with Supabase authentication
 - **Transaction Import**: Import transactions from CSV and PDF files (supports major banks like Amex, Apple Card, US Bank)
 - **Automatic Categorization**: Smart categorization based on merchant names and descriptions
 - **Budget Planning**: Create and manage budget categories with subcategories
@@ -15,12 +16,18 @@ An advanced spending tracker application that combines transaction tracking and 
 - **Export Options**: Export budget data to Excel and PDF formats
 - **Transaction Management**: Edit, categorize, and delete transactions
 - **Filtering & Sorting**: Filter transactions by date, category, and sort by various criteria
+- **Personalized Finance Tracker**: User-specific transactions and categories
+- **Financial Summaries**: Real-time calculation of income, expenses, and net balance
+- **Category Management**: Create custom income and expense categories with color coding and budget limits
 
 ## Tech Stack
 
 - **Frontend**: React 19 with TypeScript
 - **Styling**: Tailwind CSS with dark mode support
 - **Charts**: Chart.js for data visualization
+- **Authentication**: Supabase for user authentication and database
+- **Icons**: Lucide React for UI icons
+- **Date Handling**: date-fns for date formatting
 - **Build Tool**: Vite
 - **File Processing**: PapaParse for CSV, PDF.js for PDF documents
 - **State Management**: React Hooks with custom hooks
@@ -78,6 +85,17 @@ src/
 │   ├── left-pane.tsx
 │   ├── right-pane.tsx
 │   └── ...
+├── features/            # Feature-based organization
+│   ├── auth/            # Authentication feature
+│   │   ├── components/  # Auth UI components
+│   │   ├── hooks/       # Auth hooks and context
+│   │   ├── services/    # Auth API services
+│   │   └── types/       # Auth type definitions
+│   └── finance/         # Finance tracking feature
+│       ├── components/  # Finance UI components
+│       ├── hooks/       # Finance hooks and context
+│       ├── services/    # Finance API services
+│       └── types/       # Finance type definitions
 ├── hooks/               # Custom React hooks
 │   ├── useTransactions.ts
 │   ├── useCategories.ts

@@ -1,7 +1,23 @@
-export { default as BudgetWithTransactions } from './BudgetWithTransactions';
-export { default as TransactionImportReport } from './components/TransactionImportReport';
-export { default as BudgetDashboard } from './components/BudgetDashboard';
-export { useBudget } from './hooks/useBudget';
-export { budgetService } from './services/BudgetService';
-export * from './types/budget.types';
-export * from './utils/budgetUtils';
+// Domain Models
+export type { BudgetCategory, BudgetSubcategory, BudgetSummary, Transaction } from './domain/models/BudgetModels';
+
+// Repository Interfaces
+export type { BudgetRepository, TransactionRepository } from './domain/repositories/BudgetRepositoryInterface';
+
+// Services
+export { BudgetService } from './application/services/BudgetService';
+
+// Use Cases
+export type { 
+  GetBudgetCategoriesUseCase, 
+  AddBudgetCategoryUseCase, 
+  UpdateBudgetCategoryUseCase,
+  DeleteBudgetCategoryUseCase,
+  AddBudgetSubcategoryUseCase
+} from './application/usecases/BudgetUseCases';
+
+// Hooks
+export { useBudgetHook, type BudgetHookInterface } from './hooks/useBudgetHook';
+
+// Factory
+export { BudgetServiceFactory } from './infrastructure/factories/BudgetServiceFactory';

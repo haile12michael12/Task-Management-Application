@@ -5,12 +5,8 @@ import { en } from './en';
 import { am } from './am';
 
 const resources = {
-  en: {
-    translation: en
-  },
-  am: {
-    translation: am
-  }
+  en: { translation: en },
+  am: { translation: am },
 };
 
 i18n
@@ -19,29 +15,26 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
-    debug: process.env.NODE_ENV === 'development',
-    
+    debug: false,
     interpolation: {
       escapeValue: false,
     },
-    
     detection: {
       // order and from where user language should be detected
-      order: ['localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
+      order: ['localStorage', 'navigator', 'htmlTag'],
       
       // keys or params to lookup language from
       lookupLocalStorage: 'i18nextLng',
-      
+      lookupFromPathIndex: 0,
+      lookupFromSubdomainIndex: 0,
+
       // cache user language on
       caches: ['localStorage'],
-      
+      excludeCacheFor: ['cimode'],
+
       // optional htmlTag with lang attribute, the default is:
-      htmlTag: document.documentElement
+      htmlTag: document.documentElement,
     },
-    
-    react: {
-      useSuspense: false
-    }
   });
 
 export default i18n;

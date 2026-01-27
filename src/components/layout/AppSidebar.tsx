@@ -34,6 +34,7 @@ const mainNavItems = [
   { title: "Accounts", url: "/accounts", icon: Wallet },
   { title: "Transactions", url: "/transactions", icon: ArrowLeftRight },
   { title: "Budgets", url: "/budgets", icon: PiggyBank },
+
   { title: "Goals", url: "/goals", icon: Target },
   { title: "Reports", url: "/reports", icon: BarChart3 },
   { title: "Advanced", url: "/advanced-dashboard", icon: BarChart3 },

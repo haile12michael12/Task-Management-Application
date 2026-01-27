@@ -3,7 +3,7 @@ import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/s
 import { AppSidebar } from "./AppSidebar";
 import AppFooter from "./AppFooter";
 import TopNavbar from "../navbar/TopNavbar";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import LanguageSelector from "../navbar/LanguageSelector";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Bell } from "lucide-react";
 import { useTheme } from "@/hooks/use-theme";
@@ -48,7 +48,7 @@ export function DashboardLayout({ children, title, subtitle, showTopNavbar = fal
                     3
                   </span>
                 </Button>
-                <LanguageSwitcher />
+                <LanguageSelector />
                 <Button variant="ghost" size="icon" onClick={toggleTheme}>
                   {theme === "dark" ? (
                     <Sun className="h-5 w-5" />

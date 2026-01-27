@@ -3,10 +3,10 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import ThreeDChart from '@/components/ThreeDChart';
-import AdvancedAnalyticsDashboard from '@/components/AdvancedAnalyticsDashboard';
-import InteractiveSpendingChart from '@/components/InteractiveSpendingChart';
-import DataFilterControls from '@/components/DataFilterControls';
+import ThreeDChart from '@/components/charts/ThreeDChart';
+import AdvancedAnalyticsDashboard from '@/components/charts/AdvancedAnalyticsDashboard';
+import InteractiveSpendingChart from '@/components/charts/InteractiveSpendingChart';
+import DataFilterControls from '@/components/forms/DataFilterControls';
 import { useAIInsights } from '../hooks/useAIInsights';
 import { useCategories } from '../hooks/useCategories';
 import { TrendingUp, TrendingDown, AlertTriangle, Target, DollarSign, Calendar, Sparkles } from 'lucide-react';
@@ -94,7 +94,7 @@ const AdvancedDashboard: React.FC = () => {
   ];
 
   return (
-    <DashboardLayout title="Advanced Analytics Dashboard" subtitle="Comprehensive insights and 3D visualizations">
+    <DashboardLayout title="Advanced Analytics Dashboard" subtitle="Comprehensive insights and 3D visualizations" showTopNavbar={true}>
       <div className="space-y-6">
         {/* AI Insights Banner */}
         <Card className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white">

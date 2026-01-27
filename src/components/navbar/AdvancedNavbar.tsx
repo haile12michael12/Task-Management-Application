@@ -25,7 +25,8 @@ import { cn } from '@/utils/cn';
 import LanguageSelector from './LanguageSelector';
 import { useTranslation } from 'react-i18next';
 
-const AdvancedNavbar: React.FC = () => {
+type NavbarVariant = 'advanced' | 'top';
+const AdvancedNavbar: React.FC<{ variant?: NavbarVariant }> = ({ variant = 'advanced' }) => {
   const { theme, toggleTheme } = useTheme();
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -40,10 +41,11 @@ const AdvancedNavbar: React.FC = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    if (variant === 'advanced') {
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }
+  }, [variant]);
 
   const navItems = [
     { name: t('common.home'), to: '/', icon: Home },
@@ -62,14 +64,17 @@ const AdvancedNavbar: React.FC = () => {
     { name: 'Financial Reports', to: '/reports', description: 'Generate financial reports' },
   ];
 
-  return (
-    <header 
-      className={cn(
+  const Container: React.ElementType = variant === 'advanced' ? 'header' : 'nav';
+  const containerClass = variant === 'advanced'
+    ? cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         'bg-background/80 backdrop-blur-md border-b border-border/50',
         isScrolled ? 'py-2 shadow-sm' : 'py-4'
-      )}
-    >
+      )
+    : cn('bg-background border-b border-border/50 sticky top-0 z-40');
+
+  return (
+    <Container className={containerClass}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -109,35 +114,36 @@ const AdvancedNavbar: React.FC = () => {
             })}
 
             {/* Products Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setIsProductsMenuOpen(true)}
-              onMouseLeave={() => setIsProductsMenuOpen(false)}
-            >
-              <button
-                className={cn(
-                  'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                  'hover:bg-accent/50 hover:text-accent-foreground text-foreground/80'
-                )}
+            {variant === 'advanced' && (
+              <div 
+                className="relative"
+                onMouseEnter={() => setIsProductsMenuOpen(true)}
+                onMouseLeave={() => setIsProductsMenuOpen(false)}
               >
-                {t('common.products')} <ChevronDown className="w-4 h-4 ml-1" />
-              </button>
-
-              {isProductsMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
-                  {productItems.map((item) => (
-                    <Link
-                      key={item.to}
-                      to={item.to}
-                      className="block px-4 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-accent-foreground transition-colors"
-                    >
-                      <div className="font-medium">{item.name}</div>
-                      <div className="text-xs text-foreground/60">{item.description}</div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+                <button
+                  className={cn(
+                    'flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200',
+                    'hover:bg-accent/50 hover:text-accent-foreground text-foreground/80'
+                  )}
+                >
+                  {t('common.products')} <ChevronDown className="w-4 h-4 ml-1" />
+                </button>
+                {isProductsMenuOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-background border border-border rounded-lg shadow-lg py-2 z-50">
+                    {productItems.map((item) => (
+                      <Link
+                        key={item.to}
+                        to={item.to}
+                        className="block px-4 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-accent-foreground transition-colors"
+                      >
+                        <div className="font-medium">{item.name}</div>
+                        <div className="text-xs text-foreground/60">{item.description}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </nav>
 
           {/* Right Side Actions */}
@@ -146,23 +152,25 @@ const AdvancedNavbar: React.FC = () => {
             <LanguageSelector />
             
             {/* Search Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hidden md:flex relative"
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-            >
-              <Search className="h-5 w-5" />
-              {isSearchOpen && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-2">
-                  <input
-                    type="text"
-                    placeholder={t('common.searchPlaceholder')}
-                    className="w-full px-3 py-2 bg-accent rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-              )}
-            </Button>
+            {variant === 'advanced' && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:flex relative"
+                onClick={() => setIsSearchOpen(!isSearchOpen)}
+              >
+                <Search className="h-5 w-5" />
+                {isSearchOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-80 bg-background border border-border rounded-lg shadow-lg p-2">
+                    <input
+                      type="text"
+                      placeholder={t('common.searchPlaceholder')}
+                      className="w-full px-3 py-2 bg-accent rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                    />
+                  </div>
+                )}
+              </Button>
+            )}
 
             {/* Theme Toggle */}
             <Button
@@ -278,7 +286,7 @@ const AdvancedNavbar: React.FC = () => {
           </div>
         )}
       </div>
-    </header>
+    </Container>
   );
 };
 
